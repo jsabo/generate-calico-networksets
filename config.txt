@@ -6,4 +6,4 @@ ip_ranges.url.azure=https://www.microsoft.com/en-us/download/confirmation.aspx?i
 ip_ranges.url.aws=https://ip-ranges.amazonaws.com/ip-ranges.json
 
 [Output Path]
-path=/Users/erezsemaria/Desktop
+path=/Users/erezsemaria/Desktop/

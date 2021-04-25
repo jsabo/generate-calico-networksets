@@ -5,6 +5,7 @@ from global_sets_generator.utils.transformer import Transformer
 
 CLOUD_PROVIDER_SECTION = 'Cloud Providers'
 IP_RANGES_SECTION = 'IP Ranges'
+OUTPUT_PATH = 'Output Path'
 
 extractor_module = 'global_sets_generator.utils.extractor'
 transformer_module = 'global_sets_generator.utils.transformer'
@@ -31,7 +32,8 @@ def get_url(conf: configparser.ConfigParser, cloud_provider: str)-> str:
 
 
 def write_file(path: str, filename: str, data):
-    pass
+    with open('{}{}'.format(path, file_name), "w") as file:
+        file.write(data)
 
 
 if __name__ == '__main__':
@@ -45,5 +47,7 @@ if __name__ == '__main__':
             source = get_url(config, cloud_provider)
             extractor: Extractor = str_to_instance(extractor_module, '{}Extractor'.format(cloud_provider))
             transformer: Transformer = str_to_instance(transformer_module, '{}Transformer'.format(cloud_provider))
-            tmp = extractor.extract(source)
-            write_file('', '', transformer.transform(extractor.extract(source)))
+            output_path = config.get(OUTPUT_PATH, 'path')
+            file_name = '{}GlobalNetworkSet.yaml'.format(cloud_provider)
+            print('Creating file {} at path {}'.format(file_name, output_path))
+            write_file(output_path, file_name, transformer.transform(extractor.extract(source)))
