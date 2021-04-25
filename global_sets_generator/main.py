@@ -37,7 +37,7 @@ def write_file(path: str, filename: str, data):
 if __name__ == '__main__':
     # todo add error handling around config file
     config = configparser.ConfigParser()
-    config.read("../config.txt")
+    config.read("./config.txt")
     cloud_providers: str = config.get(CLOUD_PROVIDER_SECTION, 'cloud_provider_list')
     if cloud_providers and isinstance(cloud_providers, str):
         provider_list = cloud_providers.split(',')
