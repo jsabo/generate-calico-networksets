@@ -14,6 +14,10 @@ To use, first set the output in the *config.txt* file under the *Output Path* se
 Here the cloud provider global network sets shall be written to files with the naming convention
 *<cloud_provider>GlobalNetworkSet.yaml*
 Once the output path has been chosen run
+>pip install -r requirements.txt
+
+to install all the python requirements, and then run
+
 > python -m global_sets_generator.main
 
-from the root directory.
+from the root directory to generate the global sets YAML files for Azure and AWS
