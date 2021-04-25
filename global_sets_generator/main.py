@@ -27,7 +27,7 @@ def str_to_instance(module_name: str, class_name: str):
 
 def get_url(conf: configparser.ConfigParser, cloud_provider: str)-> str:
     conf_entry = 'ip_ranges.url.{}'.format(cloud_provider.lower())
-    return config.get(IP_RANGES_SECTION, conf_entry)
+    return conf.get(IP_RANGES_SECTION, conf_entry)
 
 
 def write_file(path: str, filename: str, data):
@@ -35,6 +35,7 @@ def write_file(path: str, filename: str, data):
 
 
 if __name__ == '__main__':
+    # todo add error handling around config file
     config = configparser.ConfigParser()
     config.read("../config.txt")
     cloud_providers: str = config.get(CLOUD_PROVIDER_SECTION, 'cloud_provider_list')
@@ -44,4 +45,5 @@ if __name__ == '__main__':
             source = get_url(config, cloud_provider)
             extractor: Extractor = str_to_instance(extractor_module, '{}Extractor'.format(cloud_provider))
             transformer: Transformer = str_to_instance(transformer_module, '{}Transformer'.format(cloud_provider))
-            write_file(transformer.transform(extractor.extract(source)))
+            tmp = extractor.extract(source)
+            # write_file(transformer.transform(extractor.extract(source)))

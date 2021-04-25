@@ -2,5 +2,5 @@
 cloud_provider_list=Aws,Azure
 
 [IP Ranges]
-ip_ranges.url.azure=https://www.microsoft.com/en-us/download/details.aspx?id=56519
+ip_ranges.url.azure=https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519
 ip_ranges.url.aws=https://ip-ranges.amazonaws.com/ip-ranges.json
