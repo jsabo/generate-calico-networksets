@@ -46,4 +46,4 @@ if __name__ == '__main__':
             extractor: Extractor = str_to_instance(extractor_module, '{}Extractor'.format(cloud_provider))
             transformer: Transformer = str_to_instance(transformer_module, '{}Transformer'.format(cloud_provider))
             tmp = extractor.extract(source)
-            # write_file(transformer.transform(extractor.extract(source)))
+            write_file('', '', transformer.transform(extractor.extract(source)))
